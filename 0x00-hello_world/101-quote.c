@@ -1,9 +1,8 @@
 #include <unistd.h>
-
 /**
-*main - Entry point
+*main-Entry point
 *
-*Description: print a qoute using write function
+*Description:print a qoute using write function
 *write(int fd.const void *buf.size_t count)
 *
 *Return: 1 (not Succsses)
