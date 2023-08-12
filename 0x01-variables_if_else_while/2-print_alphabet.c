@@ -1,14 +1,19 @@
 #include <stdio.h>
+
 /**
- * main - function for printing alphabet
- * Return: Alwayas (Success)
- */
+* main - this is my function
+*
+* Return: 0 when successfull
+*/
+
 int main(void)
 {
-	int count = 97;
+	char letter;
 
-	for (count; count <= 122; count++)
-		putchar(count);
+	for (letter = 'a'; letter <= 'z'; letter++)
+		putchar(letter);
+
 	putchar('\n');
+
 	return (0);
 }
