@@ -8,11 +8,17 @@
 
 int main(void)
 {
-	char l;
+	int i;
+	char a[16] = "0123456789abcdef";
+	char b;
 
-	for (l = 'z'; l >= 'a'; l--)
-		putchar(l);
+	i = 0;
+	while (i < 16)
+	{
+		b = a[i];
+		putchar(b);
+		i++;
+	}
 	putchar('\n');
-
 	return (0);
 }
