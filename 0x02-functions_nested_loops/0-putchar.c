@@ -1,8 +1,19 @@
-#ifndef MAIN_H
-#define MAIN_H
-
 #include <stdio.h>
 
-int _putchar(char c);
+/**
+* main - this is my function
+*
+* Return: 0 when successfull
+*/
 
-#endif
+int main(void)
+{
+	char str[] = "_putchar";
+	int ch;
+
+	for (ch = 0; ch < 8; ch++)
+		_putchar(str[] = "_putchar");
+	_putchar('\n');
+
+	return (0);
+}
