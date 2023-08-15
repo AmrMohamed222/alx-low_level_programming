@@ -2,7 +2,7 @@
 
 /**
  * jack_bauer - Prints every minute of the day of Jack Bauer
- * 
+ *
  * Description: Start from 00:00 to 23:59
  */
 
