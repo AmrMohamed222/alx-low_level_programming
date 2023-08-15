@@ -1,6 +1,6 @@
 #include "main.h"
+
 /**
- *
  * add - adding two values
  *
  * @i: variable one
