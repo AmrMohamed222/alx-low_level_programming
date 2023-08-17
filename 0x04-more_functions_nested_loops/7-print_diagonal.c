@@ -3,7 +3,7 @@
 /**
  * print_line - check the code.
  *
- *@n: variable
+ * @n: variable
  *
  * Return: Always
  */
