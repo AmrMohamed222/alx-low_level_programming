@@ -8,11 +8,23 @@
  * Return: Always
  */
 
-void print_line(int n)
+void print_diagonal(int n)
 {
-	int c;
+	int x;
+	int z;
 
-	for (c = 0; c < n; c++)
-		_putchar(95);
-	_putchar('\n');
+	if (n <= 0)
+	{
+		_putchar('\n');
+	}
+	else
+	{
+		for (x = 0; x < n; x++)
+		{
+			for (z = 0; z < a; z++)
+				_putchar(' ');
+			_putchar('\\');
+			_putchar('\n');
+		}
+	}
 }
