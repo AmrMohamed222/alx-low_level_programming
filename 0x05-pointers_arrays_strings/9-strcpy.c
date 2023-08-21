@@ -23,8 +23,8 @@ char *_strcpy(char *dest, char *src)
 		{
 			dest[count] = src[count];
 			count++;
-		}
-	}										}
-	dest[count] = '\0';
+		}										}
+		dest[count] = '\0';
+	}
 	return (dest);
 }
