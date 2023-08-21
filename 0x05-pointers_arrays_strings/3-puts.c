@@ -10,13 +10,14 @@
 
 void _puts(char *str)
 {
-	int a;
-	int let;
+	int i = 0;
 
-	for (a = 0; str[a] != 0; a++)
+	while (1)
 	{
-		let = str[a];
-		_putchar(let);
+		if (*(str + i) == '\0')
+			break;
+		_putchar(*(str + i));
+		i++;
 	}
 	_putchar('\n');
 }
