@@ -1,5 +1,6 @@
 #include "main.h"
 #include <time.h>
+#include <stdlib.h>
 
 /*
  * main - generates random password for 101-cracken
