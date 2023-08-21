@@ -15,10 +15,10 @@ int main(void)
 	srand(time(NULL));
 	while (sum <= 2645)
 	{
-		c = rand () % 120;
+		c = rand() % 120;
 		sum += c;
-		putcher(c);
+		_putcher(c);
 	}
-	putcher(2772 - sum);
+	_putcher(2772 - sum);
 	return (0);
 }
