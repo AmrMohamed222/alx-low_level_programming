@@ -15,12 +15,12 @@ void print_rev(char *str)
 
 	while (1)
 	{
-		if (*(s + a) == '\0')
+		if (*(str + a) == '\0')
 			break;
 		else
 			a++;
 	}
 	for (b = a - 1; b >= 0; b--)
-		_putchar(s[b]);
+		_putchar(str[b]);
 	_putchar('\n');
 }
