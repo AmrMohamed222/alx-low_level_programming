@@ -10,13 +10,17 @@
 
 void print_rev(char *str)
 {
-	int a;
-	int let;
+	int a = 0;
+	int b;
 
-	for  (a = a - 1; a >= 0; a--)
+	while (1)
 	{
-		let = str[a];
-		_putchar(let);
+		if (*(s + a) == '\0')
+			break;
+		else
+			a++;
 	}
+	for (b = a - 1; b >= 0; b--)
+		_putchar(s[b]);
 	_putchar('\n');
 }
