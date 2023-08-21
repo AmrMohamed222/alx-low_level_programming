@@ -17,6 +17,7 @@ void print_rev(char *str)
 	{
 		if (*(str + a) == '\0')
 			break;
+
 		else
 			a++;
 	}
