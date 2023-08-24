@@ -8,43 +8,18 @@
 
 void print_number(int n)
 {
-	int power, neg, bool;
-
-	neg = 0;
-	power = 1;
-	bool = n;
+	unsigned int n1;
 
 	if (n < 0)
 	{
+		n1 = -n;
 		_putchar('-');
-		neg = 1;
-	}
+	} 
+	else
+		n1 = n;
 
-	while (bool > 9 || bool < -9)
-	{
-		power *= 10;
-		bool /= 10;
-	}
+	if (n1 / 10)
+		print_number(n1 / 10);
 
-	while (power > 0)
-	{
-		if (power > 9)
-		{
-			if (!neg)
-				_putchar((n / power % 10) + '0');
-			else
-				_putchar((n / power % 10) * -1 + '0');
-
-			power /= 10;
-		}
-
-		if (power == 1)
-		{
-			if (neg)
-				_putchar((n % 10) * -1 + '0');
-			else
-				_putchar(n % 10 + '0');
-			power = 0;
-		}
-	}
+	_putchar((n1 % 10) + '0');
 }
