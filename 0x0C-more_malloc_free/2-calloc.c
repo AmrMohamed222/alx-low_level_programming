@@ -1,39 +1,50 @@
 #include "main.h"
 
 /**
- * **alloc_grid - return a pointer to a 2 dimensional array of int
+ * *_memset - fills memory with a constant byte
  *
- * @width: type int width.
+ * @s: memory area to be filled
  *
- * @height: type int height.
+ * @b: char to copy
  *
- * Return: Null if 0 or negative.
+ * @n: number of times to copy b
+ *
+ * Return: pointer to the memory area s
  */
 
-int **alloc_grid(int width, int height)
+char *_memset(char *s, char b, unsigned int n)
 {
-	int **grid;
-	int x, y;
+	unsigned int i;
 
-	if (width < 1 || height < 1)
+	for (i = 0; i < n; i++)
+		s[i] = b;
+
+	return (s);
+}
+
+/**
+ * *_calloc - allocates memory for an array
+ *
+ * @nmemb: number of elements in the array
+ *
+ * @size: size of each element
+ *
+ * Return: pointer to allocated memory
+ */
+
+void *_calloc(unsigned int nmemb, unsigned int size)
+{
+	char *ptr;
+
+	if (nmemb == 0 || size == 0)
 		return (NULL);
 
-	grid = malloc(height * sizeof(*grid));
-	if (grid == NULL)
+	ptr = malloc(size * nmemb);
+
+	if (ptr == NULL)
 		return (NULL);
 
-	for (x = 0; x < height; x++)
-	{
-		grid[x] = malloc(width * sizeof(**grid));
-		if (grid[x] == NULL)
-		{
-			for (x--; x >= 0; x--)
-				free(grid[x]);
-			free(grid);
-			return (NULL);
-		}
-		for (y = 0; y < width; y++)
-			grid[x][y] = 0;
-	}
-	return (grid);
+	_memset(ptr, 0, nmemb * size);
+
+	return (ptr);
 }
