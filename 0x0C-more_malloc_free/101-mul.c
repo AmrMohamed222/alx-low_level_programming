@@ -1,122 +1,113 @@
 #include "main.h"
 
 /**
- * strtow - a function that split a string to words.
+ * is_digit - checks if a string contains a non-digit char
  *
- * @str: the string to work on it.
+ * @s: string to be evaluated
  *
- * Return: a pointer of the splited words.
+ * Return: 0 if a non-digit is found, 1 otherwise
  */
 
-void mywstr(char **, char *);
-void cmyword(char **, char *, int, int, int);
-
-char **strtow(char *str)
+int is_digit(char *s)
 {
-	int i, wxwrflag, wlen;
-	char **words;
+	int i = 0;
 
-	if (str == NULL || str[0] == '\0' || (str[0] == ' ' && str[1] == '\0'))
-		return (NULL);
-
-	i = wxwrflag = wlen = 0;
-
-	while (str[i])
+	while (s[i])
 	{
-		if (wxwrflag == 0 && str[i] != ' ')
-			wxwrflag = 1;
-
-		if (i > 0 && str[i] == ' ' && str[i - 1] != ' ')
-		{
-			wxwrflag = 0;
-			wlen++;
-		}
+		if (s[i] < '0' || s[i] > '9')
+			return (0);
 		i++;
 	}
-
-	wlen += wxwrflag == 1 ? 1 : 0;
-
-	if (wlen == 0)
-		return (NULL);
-
-
-	words = (char **)malloc(sizeof(char *) * (wlen + 1));
-
-	if (words == NULL)
-		return (NULL);
-
-	mywstr(words, str);
-	words[wlen] = NULL;
-	return (words);
+	return (1);
 }
 
 /**
- * mywstr - function that converts words into strings.
+ * _strlen - returns the length of a string
  *
- * @words: the words to work on it.
+ * @s: string to evaluate
  *
- * @str: the string to work on it.
- *
- * Return: nothing.
+ * Return: the length of the string
  */
 
-void mywstr(char **words, char *str)
+int _strlen(char *s)
 {
-	int i, j, wstart, wrflag;
+	int i = 0;
 
-	i = j = wrflag = 0;
-
-	while (str[i])
-
-	{
-		if (wrflag == 0 && str[i] != ' ')
-
-		{
-			wstart = i;
-			wrflag = 1;
-		}
-
-		if (i > 0 && str[i] == ' ' && str[i - 1] != ' ')
-
-		{
-			cmyword(words, str, wstart, i, j);
-			j++;
-			wrflag = 0;
-		}
-
+	while (s[i] != '\0')
 		i++;
-	}
 
-	if (wrflag == 1)
-		cmyword(words, str, wstart, i, j);
-
+	return (i);
 }
 
 /**
- * cmyword - creates a word from a string.
- *
- * @words: the words to insert to string.
- *
- * @str: the string to work on it.
- *
- * @start: the start position.
- *
- * @end: the stop position.
- *
- * @index: where to start inserting the new word.
- *
- * Return: nothing.
+ * errors - handles errors for main
  */
 
-void cmyword(char **words, char *str, int start, int end, int index)
+void errors(void)
 {
-	int i, j;
+	printf("Error\n");
+	exit(98);
+}
 
-	i = end - start;
-	words[index] = (char *)malloc(sizeof(char) * (i + 1));
+/**
+ * main - multiplies two positive numbers
+ *
+ * @argc: number of arguments
+ *
+ * @argv: array of arguments
+ *
+ * Return: always 0 (Success)
+ */
 
-	for (j = 0; start < end; start++, j++)
-		words[index][j] = str[start];
+int main(int argc, char *argv[])
+{
+	char *s1, *s2;
+	int len1, len2, len, i, carry, digit1, digit2, *result, a = 0;
 
-	words[index][j] = '\0';
+	s1 = argv[1], s2 = argv[2];
+
+	if (argc != 3 || !is_digit(s1) || !is_digit(s2))
+		errors();
+	len1 = _strlen(s1);
+	len2 = _strlen(s2);
+	len = len1 + len2 + 1;
+	result = malloc(sizeof(int) * len);
+
+	if (!result)
+		return (1);
+
+	for (i = 0; i <= len1 + len2; i++)
+		result[i] = 0;
+
+	for (len1 = len1 - 1; len1 >= 0; len1--)
+	{
+		digit1 = s1[len1] - '0';
+		carry = 0;
+		for (len2 = _strlen(s2) - 1; len2 >= 0; len2--)
+		{
+			digit2 = s2[len2] - '0';
+			carry += result[len1 + len2 + 1] + (digit1 * digit2);
+			result[len1 + len2 + 1] = carry % 10;
+			carry /= 10;
+		}
+
+		if (carry > 0)
+			result[len1 + len2 + 1] += carry;
+	}
+
+	for (i = 0; i < len - 1; i++)
+	{
+		if (result[i])
+			a = 1;
+
+		if (a)
+			_putchar(result[i] + '0');
+	}
+
+	if (!a)
+		_putchar('0');
+	_putchar('\n');
+	free(result);
+
+	return (0);
 }
